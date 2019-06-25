@@ -19,7 +19,7 @@ class Simulation:
         :param compartment_list: List of compartments to run in the simulation
         """
         self.compartment_list = compartment_list
-        self.substitutions = dict()
+        self.substitutions = substitutions if substitutions is not None else dict()
 
     def getFVG(self):
         """

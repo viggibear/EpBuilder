@@ -4,11 +4,12 @@ import shutil
 import sys
 
 import networkx as nx
-from PySide2.QtCore import QFile, QObject
-from PySide2.QtGui import QDoubleValidator, QIntValidator, QPixmap, QBrush
+from PySide2.QtCore import QFile, QObject, Signal, Qt
+from PySide2.QtGui import QDoubleValidator, QIntValidator, QPixmap, QBrush, QDropEvent, QIcon
 from PySide2.QtUiTools import QUiLoader
-from PySide2.QtWidgets import QApplication, QPushButton, QLineEdit, QComboBox, QCheckBox, QDialog, QLabel, QVBoxLayout, \
-    QGraphicsView, QGraphicsScene, QFileDialog, QAction, QMainWindow, QMessageBox
+from PySide2.QtWidgets import QApplication, QPushButton, QLineEdit, QComboBox, QCheckBox, QDialog, QLabel, QMenu, \
+    QGraphicsView, QGraphicsScene, QFileDialog, QAction, QMainWindow, QMessageBox, QTableWidgetItem, QTableWidget, \
+    QAbstractItemView, QVBoxLayout
 from sympy import latex
 from sympy.parsing.latex import parse_latex
 
@@ -78,6 +79,7 @@ class MainWindow(QMainWindow):
         self.timeLE = self.window.findChild(QLineEdit, 'TimeLE')
         self.timeLE.setValidator(QIntValidator())  # Validator to ensure only integers are placed in Time LineEdit
 
+        self.window.setWindowIcon(QIcon(os.path.join('ui_files', 'icon.png')))  # Set the window icon
         self.window.show()
 
     """ Button functions open_add_compartment_dialog, open_add_variable_dialog, compile, open_run_simulation, show_r0"""
@@ -359,6 +361,7 @@ class AddCompartment(QObject):
         self.symbolLE.setMaxLength(32)
         self.initLE.setMaxLength(16)
 
+        self.window.setWindowIcon(QIcon(os.path.join('ui_files', 'icon.png')))  # Set the window icon
         self.window.show()
 
     def on_add_clicked(self):
@@ -393,6 +396,7 @@ class AddVariableWindow(QObject):
         self.origin_combobox.addItem('Birth')
         self.destination_combobox.addItem('Death')
 
+        self.window.setWindowIcon(QIcon(os.path.join('ui_files', 'icon.png')))  # Set the window icon
         self.window.show()
 
     def on_add_clicked(self):
