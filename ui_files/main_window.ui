@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ModelDesigner</class>
+ <widget class="QMainWindow" name="ModelDesigner">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1245</width>
+    <height>1038</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>EpBuilder</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QPushButton" name="CompileButton">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>760</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Compile</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="LoggingView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>820</y>
+      <width>1190</width>
+      <height>170</height>
+     </rect>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="R0Button">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>760</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show R0 Forumla</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="VitalDynamicsCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>770</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Add Vital Dynamics</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="DiagramView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>10</y>
+      <width>810</width>
+      <height>710</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QTableWidgetDragRows" name="VariableTable">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>420</y>
+      <width>321</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::CustomContextMenu</enum>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>101</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Term</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Origin</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Destination</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="AddVariableButton">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>710</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Variable</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="ShowGraphButton">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>760</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Show Graph</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="AddCompartmentButton">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>330</y>
+      <width>171</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add Compartment</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="TimeLabel">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>770</y>
+      <width>47</width>
+      <height>13</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Time:</string>
+    </property>
+   </widget>
+   <widget class="QTableWidgetDragRows" name="CompartmentTable">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>40</y>
+      <width>321</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="contextMenuPolicy">
+     <enum>Qt::CustomContextMenu</enum>
+    </property>
+    <property name="columnCount">
+     <number>3</number>
+    </property>
+    <attribute name="horizontalHeaderCascadingSectionResizes">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="horizontalHeaderDefaultSectionSize">
+     <number>101</number>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Symbol</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Current Value</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="SimulateButton">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>760</y>
+      <width>121</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Run Simulation</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="SimulationOptionsLabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>730</y>
+      <width>161</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>Simulation Options</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="TimeLE">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>770</y>
+      <width>51</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>200</string>
+    </property>
+    <property name="placeholderText">
+     <string>200</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1245</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionSaveDigraph"/>
+    <addaction name="actionSavePlot"/>
+   </widget>
+   <addaction name="menuFile"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionSaveDigraph">
+   <property name="text">
+    <string>Save DiGraph</string>
+   </property>
+  </action>
+  <action name="actionSavePlot">
+   <property name="text">
+    <string>Save Simulation Output</string>
+   </property>
+  </action>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QTableWidgetDragRows</class>
+   <extends>QTableWidget</extends>
+   <header>class_definitions.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
