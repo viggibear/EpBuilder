@@ -85,7 +85,7 @@ class MainWindow(QMainWindow):
     """ Button functions open_add_compartment_dialog, open_add_variable_dialog, compile, open_run_simulation, show_r0"""
 
     def open_add_compartment_dialog(self):
-        compartment_dialog = AddCompartment(os.path.join('ui_files', 'add_component_dialog.ui'), parent=self)
+        compartment_dialog = AddCompartment(os.path.join('ui_files', 'add_compartment_dialog.ui'), parent=self)
         compartment_dialog.add_compartment.connect(self.update_lists)
 
     def open_add_variable_dialog(self):
@@ -146,6 +146,14 @@ class MainWindow(QMainWindow):
                     substitution]  # Check if substitution already exists
             except KeyError:
                 substitution_dictionary[substitution] = 0
+
+        if self.compartment_list == list():
+            QMessageBox.critical(self.window, "Run Simulation Error",
+                                 "Simulation cannot be run as no Compartments have been added")
+            return
+        elif self.variable_list == list():
+            QMessageBox.critical(self.window, "Error", "Simulation cannot be run as no Variables have been added")
+            return
 
         # Open dialog so substitutions can be set
         set_substitutions_dialog = SetSubstitutionsWindow(substitution_dictionary)
@@ -261,7 +269,7 @@ class MainWindow(QMainWindow):
             del self.variable_list[params[1]]
         if params[1] == 'CompartmentTable':
             del self.compartment_list[params[1]]
-        self.update_visuals()
+        self.compile()  # If only update_visuals are called, items will not be deleted
 
     def toggle_is(self, params):
         if params[0] == 'CompartmentTable':
@@ -304,7 +312,12 @@ class MainWindow(QMainWindow):
 
         self.update_visuals()
 
+    """ Save Functions save_digraph_event and save_plot_event"""
+
     def save_digraph_event(self):
+        if self.variable_list == list():
+            QMessageBox.warning(self.window, "Save DiGraph Error", "Cannot save DiGraph as there are no Variables")
+            return
         path_to_file, _ = QFileDialog.getSaveFileName(self.window, self.tr("Load Image"), self.tr("~/Desktop/"),
                                                       self.tr("Images (*.png)"))  # Open FileDialog and get link
         shutil.move('graph.png', path_to_file)  # Move graph.png to path specified
@@ -314,6 +327,9 @@ class MainWindow(QMainWindow):
         try:
             output_dataframe = self.simulation.get_dataframe()
         except AttributeError:  # If Simulation has not been run yet, throw a Warning Message
+            QMessageBox.warning(self.window, "Save Plot Error", "Please ensure that you have run your simulation")
+            return
+        except IndexError:
             QMessageBox.warning(self.window, "Save Plot Error", "Please ensure that you have run your simulation")
             return
         path_to_file, _ = QFileDialog.getSaveFileName(self.window, self.tr("Load Image"), self.tr("~/Desktop/"),
@@ -452,7 +468,8 @@ class SetSubstitutionsWindow(QDialog):
         run_button.clicked.connect(self.on_run_clicked)
 
         self.setLayout(layout)
-        self.setWindowTitle("Set Substitutions")
+        self.setWindowIcon(QIcon(os.path.join('ui_files', 'icon.png')))  # Set the window icon
+        self.setWindowTitle("Set Substitutions")  # Set the window title
 
     def on_run_clicked(self):
         value_list = list()
