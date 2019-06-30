@@ -6,6 +6,8 @@ EpBuilder is a beautiful Compartmental Epidemiology Builder that can quickly pro
 ![Main GUI for EpBuilder](https://i.imgur.com/PjMH9wZ.png)
 
 # Running EpBuilder
+Clone repository and double click `gui.py`to run EpBuilder (see below for requirements)
+
 Usage requirements: (also found in `requirements.txt`)
 
  1. matplotlib (for plotting and LaTeX rendering)
